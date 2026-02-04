@@ -1,76 +1,121 @@
 /**
- * OOPSBannerApp UC6 – OOPS Banner Application (Use Case 6)
+ * OOPSBannerApp UC7 – OOPS Banner Application (Use Case 7)
  *
- * This class extends Use Case 5 by introducing helper methods
- * to generate banner patterns for individual characters.
- * The banner lines are assembled by invoking these methods
- * during array initialization, improving abstraction,
- * reusability, and adherence to the DRY principle.
+ * This class extends Use Case 6 by introducing an inner static class
+ * to encapsulate a character and its corresponding banner pattern.
+ * The banner is rendered by retrieving pattern data from stored mappings,
+ * improving encapsulation, abstraction, and object-oriented design.
  *
  * @author Brahmika
- * @version 6.0
+ * @version 7.0
  */
-
 public class OOPSBannerApp {
 
     public static void main(String[] args) {
 
-        // Initialize banner lines by invoking helper methods
-        String[] lines = {
-                String.join("   ", getO(0), getO(0), getP(0), getS(0)),
-                String.join("   ", getO(1), getO(1), getP(1), getS(1)),
-                String.join("   ", getO(2), getO(2), getP(2), getS(2)),
-                String.join("   ", getO(3), getO(3), getP(3), getS(3)),
-                String.join("   ", getO(4), getO(4), getP(4), getS(4)),
-                String.join("   ", getO(5), getO(5), getP(5), getS(5)),
-                String.join("   ", getO(6), getO(6), getP(6), getS(6))
+        // Create CharacterPatternMap objects for O, P, and S
+        CharacterPatternMap oPattern = new CharacterPatternMap(
+                'O',
+                new String[]{
+                        "*****",
+                        "*   *",
+                        "*   *",
+                        "*   *",
+                        "*   *",
+                        "*   *",
+                        "*****"
+                }
+        );
+
+        CharacterPatternMap pPattern = new CharacterPatternMap(
+                'P',
+                new String[]{
+                        "*****",
+                        "*   *",
+                        "*   *",
+                        "*****",
+                        "*    ",
+                        "*    ",
+                        "*    "
+                }
+        );
+
+        CharacterPatternMap sPattern = new CharacterPatternMap(
+                'S',
+                new String[]{
+                        "*****",
+                        "*    ",
+                        "*    ",
+                        "*****",
+                        "    *",
+                        "    *",
+                        "*****"
+                }
+        );
+
+        // Store patterns in an array of objects
+        CharacterPatternMap[] patterns = {
+                oPattern, oPattern, pPattern, sPattern
         };
 
+        // Build banner lines using StringBuilder
+        String[] bannerLines = new String[7];
+
+        for (int row = 0; row < 7; row++) {
+            StringBuilder lineBuilder = new StringBuilder();
+
+            for (int i = 0; i < patterns.length; i++) {
+                lineBuilder.append(patterns[i].getPattern()[row]);
+
+                if (i < patterns.length - 1) {
+                    lineBuilder.append("   ");
+                }
+            }
+            bannerLines[row] = lineBuilder.toString();
+        }
+
         // Render the banner using enhanced for loop
-        for (String line : lines) {
+        for (String line : bannerLines) {
             System.out.println(line);
         }
     }
 
-    // Helper method to generate letter O pattern
-    static String getO(int row) {
-        String[] o = {
-                "*****",
-                "*   *",
-                "*   *",
-                "*   *",
-                "*   *",
-                "*   *",
-                "*****"
-        };
-        return o[row];
-    }
+    /**
+     * Inner static class that encapsulates a character
+     * and its corresponding banner pattern.
+     */
+    static class CharacterPatternMap {
 
-    // Helper method to generate letter P pattern
-    static String getP(int row) {
-        String[] p = {
-                "*****",
-                "*   *",
-                "*   *",
-                "*****",
-                "*    ",
-                "*    ",
-                "*    "
-        };
-        return p[row];
-    }
+        private final char character;
+        private final String[] pattern;
 
-    // Helper method to generate letter S pattern
-    static String getS(int row) {
-        String[] s = {
-                "*****",
-                "*    ",
-                "*    ",
-                "*****",
-                "    *",
-                "    *",
-                "*****"
-        };
-        return s[row];
+        /**
+         * Constructs a CharacterPatternMap object.
+         *
+         * @param character the character to be represented
+         * @param pattern   the 7-line banner pattern for the character
+         */
+        public CharacterPatternMap(char character, String[] pattern) {
+            this.character = character;
+            this.pattern = pattern;
+        }
+
+        /**
+         * Returns the character represented by this object.
+         *
+         * @return the character
+         */
+        public char getCharacter() {
+            return character;
+        }
+
+        /**
+         * Returns the banner pattern for the character.
+         *
+         * @return an array of strings representing the pattern
+         */
+        public String[] getPattern() {
+            return pattern;
+        }
     }
 }
