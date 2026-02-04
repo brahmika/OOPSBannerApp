@@ -1,33 +1,29 @@
 /**
- * OOPSBannerApp UC4 – OOPS Banner Application (Use Case 4)
+ * OOPSBannerApp UC5 – OOPS Banner Application (Use Case 5)
  *
- * This class extends the functionality of Use Case 3 by rendering the banner
- * using a String array and a loop. This approach improves modularity and
- * prepares the code for further refactoring.
+ * This class extends Use Case 4 by declaring and initializing the banner
+ * lines in a single statement using inline array initialization.
+ * The String.join() method is used directly inside the array initializer
+ * to reduce verbosity while maintaining clarity and alignment.
  *
  * @author Developer
- * @version 4.0
+ * @version 5.0
  */
-
-// Hint:
-// 1. Define a String array with a size equal to the number of lines in the banner
-// 2. Populate each index of the array with the corresponding banner line using String.join()
-// 3. Use a for-each loop to iterate through the array and print each line
 
 public class OOPSBannerApp {
 
     public static void main(String[] args) {
-        // Define a String array with a size equal to the number of lines in the banner
-        String[] lines = new String[7];
 
-        // Populate each index of the array with the corresponding banner line using String.join()
-        lines[0] = String.join("   ", "*****", "*****", "*****", "*****");
-        lines[1] = String.join("   ", "*   *", "*   *", "*   *", "*    ");
-        lines[2] = String.join("   ", "*   *", "*   *", "*   *", "*    ");
-        lines[3] = String.join("   ", "*   *", "*   *", "*****", "*****");
-        lines[4] = String.join("   ", "*   *", "*   *", "*    ", "    *");
-        lines[5] = String.join("   ", "*   *", "*   *", "*    ", "    *");
-        lines[6] = String.join("   ", "*****", "*****", "*    ", "*****");
+        // Declare and initialize the String array in a single statement
+        String[] lines = {
+                String.join("   ", "*****", "*****", "*****", "*****"),
+                String.join("   ", "*   *", "*   *", "*   *", "*    "),
+                String.join("   ", "*   *", "*   *", "*   *", "*    "),
+                String.join("   ", "*   *", "*   *", "*****", "*****"),
+                String.join("   ", "*   *", "*   *", "*    ", "    *"),
+                String.join("   ", "*   *", "*   *", "*    ", "    *"),
+                String.join("   ", "*****", "*****", "*    ", "*****")
+        };
 
         // Use a for-each loop to iterate through the array and print each line
         for (String line : lines) {
