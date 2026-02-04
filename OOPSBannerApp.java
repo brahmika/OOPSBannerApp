@@ -1,45 +1,37 @@
 /**
- * OOPSBannerApp UC3 – OOPS Banner Application (Use Case 3)
+ * OOPSBannerApp UC4 – OOPS Banner Application (Use Case 4)
  *
- * This class extends the functionality of Use Case 2 by improving the way the "OOPS" banner
- * is constructed and displayed. It focuses on enhancing code readability and efficiency
- * by utilizing the String.join() method to create each line of the banner. This approach
- * overcomes the drawbacks of using the + operator for string concatenation, which can lead
- * to code inefficiency due to the creation of multiple intermediate String objects in memory.
+ * This class extends the functionality of Use Case 3 by rendering the banner
+ * using a String array and a loop. This approach improves modularity and
+ * prepares the code for further refactoring.
  *
- * @author Brahmika Shree
- * @version 3.0
+ * @author Developer
+ * @version 4.0
  */
 
-// Extend use case UC2 to use String.join() method to create each line of the "OOPS" banner
-// instead of concatenating strings with the + operator. This is essentially to overcome the
-// drawbacks of using the + operator for string concatenation which essentially creates
-// multiple intermediate String objects in memory leading to inefficiency.
-
-// Hint: Use String.join(" ", ...) to join the parts of each line with spaces.
+// Hint:
+// 1. Define a String array with a size equal to the number of lines in the banner
+// 2. Populate each index of the array with the corresponding banner line using String.join()
+// 3. Use a for-each loop to iterate through the array and print each line
 
 public class OOPSBannerApp {
 
-    // Main method to run the banner display
-    // Use System.out.println() to print each line of the OOPS banner to create
-    // the visual effect for the message "OOPS". Construct each line using
-    // String.join() method for better readability and efficiency.
-    // Each line corresponds to a row in the banner for the letters O, O, P, S.
     public static void main(String[] args) {
+        // Define a String array with a size equal to the number of lines in the banner
+        String[] lines = new String[7];
 
-        System.out.println(String.join(" ", "*****", "*****", "*****", "*****"));
+        // Populate each index of the array with the corresponding banner line using String.join()
+        lines[0] = String.join("   ", "*****", "*****", "*****", "*****");
+        lines[1] = String.join("   ", "*   *", "*   *", "*   *", "*    ");
+        lines[2] = String.join("   ", "*   *", "*   *", "*   *", "*    ");
+        lines[3] = String.join("   ", "*   *", "*   *", "*****", "*****");
+        lines[4] = String.join("   ", "*   *", "*   *", "*    ", "    *");
+        lines[5] = String.join("   ", "*   *", "*   *", "*    ", "    *");
+        lines[6] = String.join("   ", "*****", "*****", "*    ", "*****");
 
-        System.out.println(String.join(" ", "* *", "* *", "* *", "* "));
-
-        System.out.println(String.join(" ", "* *", "* *", "* *", "* "));
-
-        System.out.println(String.join(" ", "* *", "* *", "*****", "*****"));
-
-        System.out.println(String.join(" ", "* *", "* *", "* ", "    *"));
-
-        System.out.println(String.join(" ", "* *", "* *", "* ", "    *"));
-
-        System.out.println(String.join(" ", "*****", "*****", "* ", "*****"));
-
+        // Use a for-each loop to iterate through the array and print each line
+        for (String line : lines) {
+            System.out.println(line);
+        }
     }
 }
