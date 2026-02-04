@@ -1,33 +1,76 @@
 /**
- * OOPSBannerApp UC5 – OOPS Banner Application (Use Case 5)
+ * OOPSBannerApp UC6 – OOPS Banner Application (Use Case 6)
  *
- * This class extends Use Case 4 by declaring and initializing the banner
- * lines in a single statement using inline array initialization.
- * The String.join() method is used directly inside the array initializer
- * to reduce verbosity while maintaining clarity and alignment.
+ * This class extends Use Case 5 by introducing helper methods
+ * to generate banner patterns for individual characters.
+ * The banner lines are assembled by invoking these methods
+ * during array initialization, improving abstraction,
+ * reusability, and adherence to the DRY principle.
  *
- * @author Developer
- * @version 5.0
+ * @author Brahmika
+ * @version 6.0
  */
 
 public class OOPSBannerApp {
 
     public static void main(String[] args) {
 
-        // Declare and initialize the String array in a single statement
+        // Initialize banner lines by invoking helper methods
         String[] lines = {
-                String.join("   ", "*****", "*****", "*****", "*****"),
-                String.join("   ", "*   *", "*   *", "*   *", "*    "),
-                String.join("   ", "*   *", "*   *", "*   *", "*    "),
-                String.join("   ", "*   *", "*   *", "*****", "*****"),
-                String.join("   ", "*   *", "*   *", "*    ", "    *"),
-                String.join("   ", "*   *", "*   *", "*    ", "    *"),
-                String.join("   ", "*****", "*****", "*    ", "*****")
+                String.join("   ", getO(0), getO(0), getP(0), getS(0)),
+                String.join("   ", getO(1), getO(1), getP(1), getS(1)),
+                String.join("   ", getO(2), getO(2), getP(2), getS(2)),
+                String.join("   ", getO(3), getO(3), getP(3), getS(3)),
+                String.join("   ", getO(4), getO(4), getP(4), getS(4)),
+                String.join("   ", getO(5), getO(5), getP(5), getS(5)),
+                String.join("   ", getO(6), getO(6), getP(6), getS(6))
         };
 
-        // Use a for-each loop to iterate through the array and print each line
+        // Render the banner using enhanced for loop
         for (String line : lines) {
             System.out.println(line);
         }
+    }
+
+    // Helper method to generate letter O pattern
+    static String getO(int row) {
+        String[] o = {
+                "*****",
+                "*   *",
+                "*   *",
+                "*   *",
+                "*   *",
+                "*   *",
+                "*****"
+        };
+        return o[row];
+    }
+
+    // Helper method to generate letter P pattern
+    static String getP(int row) {
+        String[] p = {
+                "*****",
+                "*   *",
+                "*   *",
+                "*****",
+                "*    ",
+                "*    ",
+                "*    "
+        };
+        return p[row];
+    }
+
+    // Helper method to generate letter S pattern
+    static String getS(int row) {
+        String[] s = {
+                "*****",
+                "*    ",
+                "*    ",
+                "*****",
+                "    *",
+                "    *",
+                "*****"
+        };
+        return s[row];
     }
 }
